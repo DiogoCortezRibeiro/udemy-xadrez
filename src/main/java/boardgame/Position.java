@@ -16,6 +16,14 @@ public class Position {
         this.column = column;
     }
 
+    public int getColumn() {
+        return column;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
     @Override
     public String toString()
     {

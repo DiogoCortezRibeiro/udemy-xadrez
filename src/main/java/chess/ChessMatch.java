@@ -35,9 +35,18 @@ public class ChessMatch {
 
         validateSourcePosition(source);
 
+        validateTargetPosition(source, target);
+
         Piece capturePiece = makeMove(source, target);
 
         return (ChessPiece) capturePiece;
+    }
+
+    private void validateTargetPosition(Position source, Position target) {
+        if(!board.getPiece(source).possibleMove(target))
+        {
+            throw new ChessException("Movimento invalido da peça");
+        }
     }
 
     private Piece makeMove(Position source, Position target) {

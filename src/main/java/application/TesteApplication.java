@@ -18,7 +18,7 @@ public class TesteApplication {
         while(true) {
             try {
                 for (int i = 0; i < 50; ++i) System.out.println();
-                UI.printBoard(chessMatch.getPieces());
+                UI.printMatch(chessMatch);
 
                 System.out.println();
 

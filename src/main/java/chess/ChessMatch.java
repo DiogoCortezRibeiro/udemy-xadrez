@@ -8,10 +8,22 @@ import exceptions.ChessException;
 public class ChessMatch {
 
     private Board board;
+    private int turn;
+    private Color currentPlayer;
 
     public ChessMatch() {
         this.board = new Board(8, 8);
+        turn = 1;
+        currentPlayer = Color.WHITE;
         initialSetup();
+    }
+
+    public int getTurn() {
+        return turn;
+    }
+
+    public Color getCurrentPlayer() {
+        return currentPlayer;
     }
 
     public ChessPiece[][] getPieces()
@@ -39,6 +51,8 @@ public class ChessMatch {
 
         Piece capturePiece = makeMove(source, target);
 
+        nextTurn();
+
         return (ChessPiece) capturePiece;
     }
 
@@ -54,6 +68,12 @@ public class ChessMatch {
         {
             throw new ChessException("Movimento invalido da peça");
         }
+    }
+
+    private void nextTurn()
+    {
+        turn++;
+        currentPlayer = (currentPlayer == Color.WHITE) ? Color.BLACK : Color.WHITE;
     }
 
     private Piece makeMove(Position source, Position target) {
@@ -73,6 +93,11 @@ public class ChessMatch {
         if(!board.getPiece(source).isThereAnypossibleMove())
         {
             throw new ChessException("Sem movimento possivel para a peça");
+        }
+
+        if(currentPlayer != ((ChessPiece)board.getPiece(source)).getColor())
+        {
+            throw new ChessException("Peça do adversario, movimento invalido");
         }
     }
 

@@ -53,6 +53,11 @@ public class ChessMatch {
         {
             throw new ChessException("Não existe peça na posição de origem");
         }
+
+        if(!board.getPiece(source).isThereAnypossibleMove())
+        {
+            throw new ChessException("Sem movimento possivel para a peça");
+        }
     }
 
     private void placeNewPiece(char column, int row, ChessPiece piece)

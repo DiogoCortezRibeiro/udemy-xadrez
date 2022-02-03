@@ -25,6 +25,11 @@ public class TesteApplication {
                 System.out.print("Origem: ");
                 ChessPosition source = UI.readChessPosition(sc);
 
+                boolean[][] possibleMoves = chessMatch.possibleMoves(source);
+
+                for (int i = 0; i < 50; ++i) System.out.println();
+                UI.printBoard(chessMatch.getPieces(), possibleMoves);
+
                 System.out.print("Destino: ");
                 ChessPosition target = UI.readChessPosition(sc);
 

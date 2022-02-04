@@ -18,7 +18,7 @@ public class TesteApplication {
         ChessMatch chessMatch = new ChessMatch();
         List<ChessPiece> captured = new ArrayList<>();
 
-        while(true) {
+        while(!chessMatch.getCheckMate()) {
             try {
                 for (int i = 0; i < 50; ++i) System.out.println();
                 UI.printMatch(chessMatch, captured);
@@ -53,5 +53,8 @@ public class TesteApplication {
                 sc.nextLine();
             }
         }
+        for (int i = 0; i < 50; ++i) System.out.println();
+        UI.printMatch(chessMatch, captured);
+        System.out.println("Jogo encerrado, Check-mate");
     }
 }
